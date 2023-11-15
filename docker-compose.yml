@@ -1,4 +1,3 @@
-# Use postgres/example user/password credentials
 version: '3.1'
 
 services:
@@ -7,10 +6,22 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD: "${DB_PASS}"
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
+  spring-boot-app:
+    image: springio/gs-spring-boot-docker:latest
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 80:8081
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/${DB_NAME}"
+      SPRING_DATASOURCE_USERNAME: "${DB_USER}"
+      SPRING_DATASOURCE_PASSWORD: "${DB_PASS}"
