@@ -35,7 +35,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			<configuration>
-					<mainClass>com.example.springboot.Application</finalName>
+					<mainClass>com.example.springboot.Application</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
