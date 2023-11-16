@@ -5,7 +5,7 @@
 
 	<groupId>com.bsouli</groupId>
 	<artifactId>app</artifactId>
-	<version></version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>springboot-docker-compose</name>
