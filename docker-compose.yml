@@ -19,8 +19,6 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    volumes:
-      - /tmp
     ports:
       - "8081:8081"
     environment:
