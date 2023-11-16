@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.bsouli</groupId>
-	<artifactId>app</artifactId>
-	<version>1.0.0</version>
+	<artifactId>springboot-docker-compose</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>sbapp</name>
-	<description>Spring Boot Application</description>
+	<name>springboot-docker-compose</name>
+	<description>Demo project for Spring Boot Docker Compose</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -44,7 +44,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.bsouli.sbapp.MainApplication</mainClass>
 					<finalName>springboot-docker-compose</finalName>
 				</configuration>
 			</plugin>
