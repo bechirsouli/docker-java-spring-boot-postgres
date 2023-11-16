@@ -2,6 +2,8 @@
 FROM maven:3.8.4-openjdk-17-slim AS build
 WORKDIR /app
 COPY . .
+RUN mkdir target
+RUN mkdir target/dependency
 RUN mvn clean package
 
 # Stage 2: Final stage
