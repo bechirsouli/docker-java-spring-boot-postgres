@@ -7,7 +7,8 @@ RUN mvn clean package
 # Stage 2: Final stage
 FROM eclipse-temurin:17-jdk-alpine
 VOLUME /tmp
-WORKDIR /app
-COPY --from=build /app/target/dependency /app/dependency
-COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java", "-cp", "app.jar:dependency/BOOT-INF/lib/*", "hello.Application"]
+ARG DEPENDENCY=target/dependency
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
