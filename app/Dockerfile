@@ -1,15 +1,10 @@
 FROM eclipse-temurin:17-jdk-alpine
-
-WORKDIR /app
-RUN ls target
-# Copy the JAR file into the image
-COPY target/app.jar app.jar
-
-# Create the dependency directory
+RUN addgroup -S app && adduser -S app -G app
+USER app
+VOLUME /tmp
+ARG DEPENDENCY=target/dependency
 RUN mkdir -p dependency
-
-# Extract JAR dependencies
-RUN java -Djarmode=layertools -jar app.jar extract
-
-# Set the entry point
-ENTRYPOINT ["java", "-cp", "app:dependency/dependencies/*", "hello.Application"]
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","hello.Application"]
