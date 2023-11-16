@@ -1,10 +1,15 @@
 FROM eclipse-temurin:17-jdk-alpine
-RUN addgroup -S demo && adduser -S demo -G demo
-USER demo
-RUN mkdir -p target/dependency
-RUN cd target/dependency
-RUN jar -xf ../*.jar
-VOLUME /tmp
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar ${0} ${@}"]
+
+WORKDIR /app
+
+# Copy the JAR file into the image
+COPY target/your-spring-boot-app.jar app.jar
+
+# Create the dependency directory
+RUN mkdir -p dependency
+
+# Extract JAR dependencies
+RUN java -Djarmode=layertools -jar app.jar extract
+
+# Set the entry point
+ENTRYPOINT ["java","-cp","app:dependency/dependencies/*","hello.Application"]
