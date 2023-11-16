@@ -14,13 +14,15 @@ services:
     ports:
       - 8080:8080
 
-  spring-boot-app:
-    image: springio/gs-spring-boot-docker:latest
-    restart: always
-    depends_on:
-      - db
+  app:
+    image: sbapp:1
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      - /data/sbapp
     ports:
-      - 8081:8081
+      - "8081:8081"
     environment:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/${DB_NAME}"
       SPRING_DATASOURCE_USERNAME: "${DB_USER}"
