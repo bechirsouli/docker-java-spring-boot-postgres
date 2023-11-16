@@ -44,7 +44,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.bsouli.sbapp.MainApplication</mainClass>
 					<finalName>springboot-docker-compose</finalName>
 				</configuration>
 			</plugin>
