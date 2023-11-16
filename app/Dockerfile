@@ -1,5 +1,5 @@
-FROM openjdk:8
+FROM eclipse-temurin:17-jdk-alpine
 VOLUME /tmp
-ADD target/springboot-docker-compose.jar springboot-docker-compose.jar
-EXPOSE 8081
-ENTRYPOINT ["java","-jar","springboot-docker-compose.jar"]
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar ${0} ${@}"]
