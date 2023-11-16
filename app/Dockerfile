@@ -3,6 +3,6 @@ FROM maven:3.8.2-jdk-8
 
 WORKDIR /app
 COPY . .
-RUN mvn clean install
+RUN mvnw clean install
 
-CMD mvn spring-boot:run
+CMD mvnw spring-boot:run
