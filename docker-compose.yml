@@ -20,7 +20,7 @@ services:
       context: ./app
       dockerfile: Dockerfile
     volumes:
-      - /data/sbapp
+      - /tmp
     ports:
       - "8081:8081"
     environment:
