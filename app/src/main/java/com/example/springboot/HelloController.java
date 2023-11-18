@@ -9,7 +9,7 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index(
-			@RequestParam(name = "name", required = false, defaultValue = "Bechir Souli") String name
+			@RequestParam(name = "name", required = false, defaultValue = "Bechir Souli+ hatem trabelsi") String name
 		) {
 		return "Hello " + name;
 	}
